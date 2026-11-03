@@ -1,7 +1,55 @@
 # SQL Movie Database Management System
 
 ## About Project
-This project is developed using Oracle SQL to manage movie-related information.
+This project is developed using Oracle SQL to manage movie-related information. It stores and manages details about movies, actors, directors, and genres using relational database concepts.
+
+## ER Diagram
+
+```mermaid
+erDiagram
+    ACTOR {
+        int actor_id PK
+        string name
+        string gender
+        date date_of_birth
+    }
+
+    MOVIE {
+        int movie_id PK
+        string title
+        int release_year
+        int duration
+    }
+
+    DIRECTOR {
+        int director_id PK
+        string name
+        date date_of_birth
+    }
+
+    GENRE {
+        int genre_id PK
+        string genre_name
+    }
+
+    ACT_IN {
+        int actor_id FK
+        int movie_id FK
+    }
+
+    BELONGS_TO {
+        int movie_id FK
+        int genre_id FK
+    }
+
+    ACTOR ||--o{ ACT_IN : "acts in"
+    MOVIE ||--o{ ACT_IN : "features"
+
+    DIRECTOR ||--o{ MOVIE : "directs"
+
+    GENRE ||--o{ BELONGS_TO : "contains"
+    MOVIE ||--o{ BELONGS_TO : "belongs to"
+```
 
 ## Technologies Used
 - Oracle SQL
@@ -26,4 +74,6 @@ This project is developed using Oracle SQL to manage movie-related information.
 - JOIN Operations
 
 ## Author
-Ravi Pratap Vishwakarma
+- Ravi Pratap Vishwakarma
+- Sahil Rana
+- Sahil
